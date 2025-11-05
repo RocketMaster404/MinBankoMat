@@ -1,12 +1,59 @@
-﻿namespace MinBankoMat
+﻿using System;
+
+namespace MinBankoMat
 {
    internal class LogInManager
    {
+      private List<int> usedAccountNumbers = new List<int>();
+      private Random rnd = new Random();
+
       static List<User> users = new List<User>()
       {
-         new User("Erik", 1234,1000,123),
-         new User("Malin", 1234, 2000,1234)
+         new User("Erik", 1234,1000,4455, 888888),
+         new User("Malin", 1234, 2000,5544,999999)
       };
+
+
+      public void CreateUser()
+      {
+         Console.Write("Ange användarnamn: ");
+         string userName = Inputs.GetString();
+         Console.Write("Ange pinkod: ");
+         int pinCode = Inputs.GetUserNumber();
+         Console.Write("Ange start saldo: ");
+         int balance = Inputs.GetUserNumber();
+         
+
+
+         int accountNumber = GenerateUniqueAccountNumber();
+         int resetCode = GenerateResetCode();
+         User user = new User(userName, pinCode, balance, resetCode, accountNumber);
+         users.Add(user);
+         Console.WriteLine("Användare skapad nedan ser du ditt kontonummer samt Resetkod. Spara dessa på ett säkert ställe!");
+         Console.WriteLine($"Kontonummer: {accountNumber}");
+         Console.WriteLine($"Reset kod: {resetCode}");
+         
+      }
+
+      private int GenerateUniqueAccountNumber()
+      {
+         int accountNumber;
+         do
+         {
+            accountNumber = rnd.Next(10000000, 99999999); 
+         } while (usedAccountNumbers.Contains(accountNumber));
+
+         usedAccountNumbers.Add(accountNumber);
+         return accountNumber;
+      }
+
+      private int GenerateResetCode()
+      {
+         int resetCode;
+         resetCode = rnd.Next(1000, 9999);
+         return resetCode;
+      }
+
       public static User LogIn()
       {
          bool running = true;
@@ -22,6 +69,7 @@
                if (user.UserName == userName && user.PinCode == pinCode)
                {
                   Console.WriteLine("Lyckad inloggning");
+                  Console.ReadKey();
                   return user;
                   
                }

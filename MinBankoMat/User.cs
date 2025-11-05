@@ -13,19 +13,23 @@ namespace MinBankoMat
       public int PinCode { get; set; }
       public decimal Balance { get; set; }
       public int ResetCode { get; set; }
+      public int AccountNumber { get; set; }
 
-      public User(string userName, int pinCode, decimal balance, int resetCode)
+      
+
+      public User(string userName, int pinCode, decimal balance, int resetCode, int accountNumber)
       {
          UserName = userName;
          PinCode = pinCode;
          Balance = balance;
          ResetCode = resetCode;
+         AccountNumber = accountNumber;
+         
       }
 
-      public void ShowBalance()
-      {
-         Console.WriteLine($"{UserName} ditt saldo är: {Balance}");
-      }
+      
+
+      
 
       
 

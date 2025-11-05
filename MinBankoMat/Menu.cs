@@ -26,7 +26,7 @@ namespace MinBankoMat
 
       public static void LoginChoice()
       {
-         
+
          int choice = Inputs.GetNumberMinMax(1, 3);
          switch (choice)
          {
@@ -35,8 +35,8 @@ namespace MinBankoMat
                if (user != null)
                {
                   Console.Clear();
-                  PrintMainMeny();
-                  MainMenuChoice(user);   
+
+                  MainMenuChoice(user);
                }
                break;
             case 2:
@@ -44,36 +44,52 @@ namespace MinBankoMat
                // Glömt lösenord
                break;
             case 3:
+               Console.WriteLine("Programmet avslutas");
+               RunProgram.ProgramOn = false;
                break;
-               
+
          }
       }
 
       public static void MainMenuChoice(User user)
       {
-         int choice = Inputs.GetNumberMinMax(1, 5);
-         switch (choice)
+         bool running = true;
+
+         while (running)
          {
-            case 1:
-               // Ta ut pengar
-               break;
-            case 2:
-               // Sätt in pengar
-               break;
-            case 3:
-               user.ShowBalance();
-               // Visa saldo
-               break;
-            case 4:
-               // Inställningar
-               break;
-            case 5:
-               // Logga ut
-               break;
+            Console.Clear();
+            PrintMainMeny();
+            int choice = Inputs.GetNumberMinMax(1, 5);
+            switch (choice)
+            {
+               case 1:
+                  Console.Clear();
+                  CashManager.Withdraw(user);
+                  // Ta ut pengar
+                  break;
+               case 2:
+                  Console.Clear();
+                  CashManager.Deposit(user);
+                  // Sätt in pengar
+                  break;
+               case 3:
+                  Console.Clear();
+                  CashManager.ShowBalance(user);
+                  // Visa saldo
+                  break;
+               case 4:
+                  // Inställningar
+                  break;
+               case 5:
+                  running = false;
+                  break;
+
+            }
+            Console.ReadKey();
          }
       }
 
 
-      
+
    }
 }
