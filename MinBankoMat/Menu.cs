@@ -24,7 +24,22 @@ namespace MinBankoMat
          Console.WriteLine("3) Avsluta");
       }
 
-      
+      public static void LoginChoice()
+      {
+         int choice = Inputs.GetNumberMinMax(1, 3);
+         switch (choice)
+         {
+            case 1:
+               // Logga in
+               break;
+            case 2:
+               // Glömt lösenord
+               break;
+            case 3:
+               //Avsluta
+               break;
+         }
+      }
 
       public void MainMenuChoice()
       {
