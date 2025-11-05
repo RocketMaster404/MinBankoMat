@@ -31,6 +31,7 @@ namespace MinBankoMat
          switch (choice)
          {
             case 1:
+               Console.Clear();
                var user = LogInManager.LogIn();
                if (user != null)
                {
@@ -40,8 +41,8 @@ namespace MinBankoMat
                }
                break;
             case 2:
+               Console.Clear();
                LogInManager.ResetPassword();
-               // Glömt lösenord
                break;
             case 3:
                Console.WriteLine("Programmet avslutas");
