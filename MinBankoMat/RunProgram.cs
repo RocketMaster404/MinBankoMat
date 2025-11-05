@@ -8,16 +8,19 @@ namespace MinBankoMat
 {
    internal class RunProgram
    {
+      public static bool ProgramOn = true;
       public static void Run()
       {
-         bool runProgram = true;
+         
 
-         while (runProgram)
+         while (ProgramOn)
          {
+            Console.Clear();
             Menu.PrintLoginMenu();
             Menu.LoginChoice();
             Console.ReadKey();
-            Console.Clear();
+            
+
          }
 
 
