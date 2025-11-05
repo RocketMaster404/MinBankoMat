@@ -26,22 +26,30 @@ namespace MinBankoMat
 
       public static void LoginChoice()
       {
+         
          int choice = Inputs.GetNumberMinMax(1, 3);
          switch (choice)
          {
             case 1:
-               // Logga in
+               var user = LogInManager.LogIn();
+               if (user != null)
+               {
+                  Console.Clear();
+                  PrintMainMeny();
+                  MainMenuChoice(user);   
+               }
                break;
             case 2:
+               LogInManager.ResetPassword();
                // Glömt lösenord
                break;
             case 3:
-               //Avsluta
                break;
+               
          }
       }
 
-      public void MainMenuChoice()
+      public static void MainMenuChoice(User user)
       {
          int choice = Inputs.GetNumberMinMax(1, 5);
          switch (choice)
@@ -53,6 +61,7 @@ namespace MinBankoMat
                // Sätt in pengar
                break;
             case 3:
+               user.ShowBalance();
                // Visa saldo
                break;
             case 4:
