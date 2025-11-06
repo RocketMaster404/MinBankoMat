@@ -9,22 +9,32 @@ namespace MinBankoMat
    internal class RunProgram
    {
       public static bool ProgramOn = true;
+      public static bool Admin = false;
       public static void Run()
       {
          
 
          while (ProgramOn)
          {
-            Console.Clear();
-            Menu.PrintLoginMenu();
-            Menu.LoginChoice();
-            Console.ReadKey();
-            
-
+            if (Admin)
+            {
+               // Kör admin kod
+            } else
+            {
+               UserLogIn();
+            }
          }
 
 
 
+      }
+
+      public static void UserLogIn()
+      {
+         Console.Clear();
+         Menu.PrintLoginMenu();
+         Menu.LoginChoice();
+         Console.ReadKey();
       }
 
 
