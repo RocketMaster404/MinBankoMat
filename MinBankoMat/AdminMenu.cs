@@ -6,68 +6,27 @@ using System.Threading.Tasks;
 
 namespace MinBankoMat
 {
-   internal class Menu
+   internal class AdminMenu
    {
-      public static void PrintMainMeny()
+      public static void PrintAdminMenu()
       {
          Console.WriteLine("1) Ta ut pengar");
          Console.WriteLine("2) Sätt in pengar");
          Console.WriteLine("3) Visa Saldo");
          Console.WriteLine("4) Inställningar");
-         Console.WriteLine("5) Logga ut");
+         Console.WriteLine("5) Skapa användare");
+         Console.WriteLine("6) Ändra användare");
+         Console.WriteLine("7) Logga ut");
       }
 
-      public static void PrintLoginMenu()
-      {
-         Console.WriteLine("1) Logga in");
-         Console.WriteLine("2) Glömt lösenord");
-         Console.WriteLine("3) Avsluta");
-      }
-
-      public static void LoginChoice()
-      {
-
-         int choice = Inputs.GetNumberMinMax(1, 3);
-         switch (choice)
-         {
-            case 1:
-               Console.Clear();
-               var user = LogInManager.LogIn();
-               if (user != null)
-               {
-                  Console.Clear();
-
-                  if (user.Admin)
-                  {
-                     Console.WriteLine("Admin");
-                     // Admin
-                  }
-                  else
-                  {
-                     MainMenuChoice(user);
-                  }
-               }
-               break;
-            case 2:
-               Console.Clear();
-               LogInManager.ResetPassword();
-               break;
-            case 3:
-               Console.WriteLine("Programmet avslutas");
-               RunProgram.ProgramOn = false;
-               break;
-
-         }
-      }
-
-      public static void MainMenuChoice(User user)
+      public static void AdminnMenuChoice(User user)
       {
          bool running = true;
 
          while (running)
          {
             Console.Clear();
-            PrintMainMeny();
+            PrintAdminMenu();
             int choice = Inputs.GetNumberMinMax(1, 5);
             switch (choice)
             {
@@ -90,6 +49,9 @@ namespace MinBankoMat
                   // Inställningar
                   break;
                case 5:
+                  //Skapa användare
+                  break;
+               case 7:
                   running = false;
                   break;
 
@@ -97,8 +59,5 @@ namespace MinBankoMat
             Console.ReadKey();
          }
       }
-
-
-
    }
 }

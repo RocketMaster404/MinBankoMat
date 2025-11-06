@@ -9,8 +9,9 @@ namespace MinBankoMat
 
       static List<User> users = new List<User>()
       {
-         new User("Erik", 1234,1000,4455, 888888){Admin = true},
-         new User("Malin", 1234, 2000,5544,999999)
+         new User("Erik", 1234,1000,4455, 888888),
+         new User("Malin", 1234, 2000,5544,999999),
+         new User(){UserName = "Admin", PinCode = 1234, Admin = true}
       };
 
 
@@ -66,6 +67,8 @@ namespace MinBankoMat
 
             foreach (var user in users)
             {
+               
+
                if (user.UserName == userName && user.PinCode == pinCode)
                {
                   Console.WriteLine("Lyckad inloggning");

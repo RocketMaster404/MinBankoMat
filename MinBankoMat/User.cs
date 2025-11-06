@@ -16,8 +16,11 @@ namespace MinBankoMat
       public int AccountNumber { get; set; }
       public bool Admin { get; set; } = false;
 
-      
 
+      public User()
+      {
+          
+      }
       public User(string userName, int pinCode, decimal balance, int resetCode, int accountNumber)
       {
          UserName = userName;
