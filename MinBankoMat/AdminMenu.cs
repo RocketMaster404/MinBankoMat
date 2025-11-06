@@ -10,24 +10,50 @@ namespace MinBankoMat
    {
       public static void PrintAdminMenu()
       {
+         
          Console.WriteLine("1) Ta ut pengar");
          Console.WriteLine("2) Sätt in pengar");
          Console.WriteLine("3) Visa Saldo");
          Console.WriteLine("4) Inställningar");
          Console.WriteLine("5) Skapa användare");
-         Console.WriteLine("6) Ändra användare");
+         Console.WriteLine("6) Redigera användare");
          Console.WriteLine("7) Logga ut");
+      }
+
+      public static void UserManagerMenu()
+      {
+         Console.WriteLine("1) Ändra lösenord");
+         Console.WriteLine("2) Ändra användarnamn");
+         Console.WriteLine("3) Spärra konto");
+         Console.WriteLine("4) Kundregister");
+      }
+
+      public static void UserManagerMenuChoice()
+      {
+         int input = Inputs.GetNumberMinMax(1, 4);
+         switch (input)
+         {
+            case 1:
+               // Ändra lösenord
+               break;
+            case 4:
+               LogInManager.PrintUser();
+               Console.ReadKey();
+               //Kundregister
+               break;
+         }
+         
       }
 
       public static void AdminnMenuChoice(User user)
       {
          bool running = true;
-
+         
          while (running)
          {
             Console.Clear();
             PrintAdminMenu();
-            int choice = Inputs.GetNumberMinMax(1, 5);
+            int choice = Inputs.GetNumberMinMax(1, 7);
             switch (choice)
             {
                case 1:
@@ -49,7 +75,14 @@ namespace MinBankoMat
                   // Inställningar
                   break;
                case 5:
+                  Console.Clear();
+                  LogInManager manager = new LogInManager();
+                  manager.CreateUser();
                   //Skapa användare
+                  break;
+               case 6:
+                  UserManagerMenu();
+                  // Ändra användare
                   break;
                case 7:
                   running = false;

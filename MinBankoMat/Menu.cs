@@ -39,7 +39,8 @@ namespace MinBankoMat
 
                   if (user.Admin)
                   {
-                     Console.WriteLine("Admin");
+                     AdminMenu.PrintAdminMenu();
+                     AdminMenu.AdminnMenuChoice(user);
                      // Admin
                   }
                   else
