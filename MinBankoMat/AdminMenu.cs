@@ -77,6 +77,9 @@ namespace MinBankoMat
                   // Visa saldo
                   break;
                case 4:
+                  Console.Clear();
+                  Menu.SettingsMenu();
+                  Console.ReadKey();
                   // Inställningar
                   break;
                case 5:

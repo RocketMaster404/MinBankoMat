@@ -31,7 +31,6 @@ namespace MinBankoMat
          Console.WriteLine("3) Ändra användarnamn");
          Console.WriteLine("4) Spärra konto");
          Console.WriteLine("5) Tillbaka till meny");
-         
       }
 
       public static void LoginChoice()
@@ -101,8 +100,6 @@ namespace MinBankoMat
                   Console.Clear();
                   SettingsMenu();
                   Console.ReadKey();
-
-                  // Inställningar
                   break;
                case 5:
                   running = false;
