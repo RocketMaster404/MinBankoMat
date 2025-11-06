@@ -14,6 +14,7 @@ namespace MinBankoMat
       public decimal Balance { get; set; }
       public int ResetCode { get; set; }
       public int AccountNumber { get; set; }
+      public bool Admin { get; set; } = false;
 
       
 
