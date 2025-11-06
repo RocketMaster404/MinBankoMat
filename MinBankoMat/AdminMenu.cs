@@ -14,10 +14,11 @@ namespace MinBankoMat
          Console.WriteLine("1) Ta ut pengar");
          Console.WriteLine("2) Sätt in pengar");
          Console.WriteLine("3) Visa Saldo");
-         Console.WriteLine("4) Inställningar");
-         Console.WriteLine("5) Skapa användare");
-         Console.WriteLine("6) Redigera användare");
-         Console.WriteLine("7) Logga ut");
+         Console.WriteLine("4) För över pengar");
+         Console.WriteLine("5) Inställningar");
+         Console.WriteLine("6) Skapa användare");
+         Console.WriteLine("7) Redigera användare");
+         Console.WriteLine("8) Logga ut");
       }
 
       public static void UserManagerMenu()
@@ -58,7 +59,7 @@ namespace MinBankoMat
          {
             Console.Clear();
             PrintAdminMenu();
-            int choice = Inputs.GetNumberMinMax(1, 7);
+            int choice = Inputs.GetNumberMinMax(1, 8);
             switch (choice)
             {
                case 1:
@@ -78,23 +79,28 @@ namespace MinBankoMat
                   break;
                case 4:
                   Console.Clear();
+                  UserManager.TransferMoney(user);
+                  Console.ReadKey();
+                  break;
+               case 5:
+                  Console.Clear();
                   Menu.SettingsMenu();
                   Console.ReadKey();
                   // Inställningar
                   break;
-               case 5:
+               case 6:
                   Console.Clear();
                   UserManager manager = new UserManager();
                   manager.CreateUser();
                   //Skapa användare
                   break;
-               case 6:
+               case 7:
                   Console.Clear();
                   UserManagerMenu();
                   UserManagerMenuChoice();
                   // Ändra användare
                   break;
-               case 7:
+               case 8:
                   running = false;
                   break;
 

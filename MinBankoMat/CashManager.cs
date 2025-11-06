@@ -11,9 +11,24 @@ namespace MinBankoMat
 
       public static void Withdraw(User user)
       {
+         
+
          Console.Write("Ange beloppet du önskar ta ut: ");
          int withdraw = Inputs.GetUserNumber();
-         user.Balance -= withdraw;
+
+         if(withdraw <= 100)
+         {
+            Console.WriteLine("Minsta belopp för uttag 100 Kr");
+         } else if (withdraw > user.Balance)
+         {
+            Console.WriteLine($"Du har endast {user.Balance} Kr kvar.");
+         } else
+         {
+            user.Balance -= withdraw;
+            Console.WriteLine($"{withdraw} kr har dragits från ditt konto. Nytt saldo: {user.Balance}");
+         }
+
+            
 
       }
 
@@ -21,8 +36,19 @@ namespace MinBankoMat
       {
          Console.Write("Ange hur mycket du vill sätta in: ");
          int deposit = Inputs.GetUserNumber();
-         user.Balance += deposit;
-         Console.WriteLine($"{deposit}Kr har mottagit, nytt saldo {user.Balance}");
+         if(deposit <= 0)
+         {
+            Console.WriteLine("Du kan inte ange negativa värden");
+         }else if (deposit > 10000)
+         {
+            Console.WriteLine("Insättningar över 10 000kr behöver gå via kundtjänst");
+         }
+         else
+         {
+            user.Balance += deposit;
+            Console.WriteLine($"{deposit}Kr har mottagit, nytt saldo {user.Balance}");
+         }
+        
       }
 
       public static void ShowBalance(User user)
