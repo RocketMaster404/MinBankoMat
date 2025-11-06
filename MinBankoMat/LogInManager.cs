@@ -4,17 +4,28 @@ namespace MinBankoMat
 {
    internal class LogInManager
    {
-      private List<int> usedAccountNumbers = new List<int>();
-      private Random rnd = new Random();
+      private  List<int> usedAccountNumbers = new List<int>();
+      private static Random rnd = new Random();
 
       static List<User> users = new List<User>()
       {
          new User("Erik", 1234,1000,4455, 888888){Admin = true},
          new User("Malin", 1234, 2000,5544,999999)
+
       };
 
-
-      public void CreateUser()
+      public static void PrintUser()
+      {
+         foreach(var user in users)
+         {
+            Console.WriteLine($"Användarnamn {user.UserName}");
+            Console.WriteLine($"Pinkod: {user.PinCode}");
+            Console.WriteLine($"Återställningskod: {user.ResetCode}");
+            Console.WriteLine($"Kund Id: {user.CustomerId}");
+            
+         }
+      }
+      public  void CreateUser()
       {
          Console.Write("Ange användarnamn: ");
          string userName = Inputs.GetString();
@@ -29,13 +40,14 @@ namespace MinBankoMat
          int resetCode = GenerateResetCode();
          User user = new User(userName, pinCode, balance, resetCode, accountNumber);
          users.Add(user);
-         Console.WriteLine("Användare skapad nedan ser du ditt kontonummer samt Resetkod. Spara dessa på ett säkert ställe!");
+         Console.WriteLine("Användare skapad nedan ser du ditt kontonummer, kund id samt Resetkod.");
          Console.WriteLine($"Kontonummer: {accountNumber}");
          Console.WriteLine($"Reset kod: {resetCode}");
+         Console.WriteLine($"Kund Id: {user.CustomerId}");
          
       }
 
-      private int GenerateUniqueAccountNumber()
+      private  int GenerateUniqueAccountNumber()
       {
          int accountNumber;
          do
@@ -47,7 +59,7 @@ namespace MinBankoMat
          return accountNumber;
       }
 
-      private int GenerateResetCode()
+      private  int GenerateResetCode()
       {
          int resetCode;
          resetCode = rnd.Next(1000, 9999);
@@ -66,6 +78,8 @@ namespace MinBankoMat
 
             foreach (var user in users)
             {
+               
+
                if (user.UserName == userName && user.PinCode == pinCode)
                {
                   Console.WriteLine("Lyckad inloggning");

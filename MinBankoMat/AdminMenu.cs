@@ -6,70 +6,54 @@ using System.Threading.Tasks;
 
 namespace MinBankoMat
 {
-   internal class Menu
+   internal class AdminMenu
    {
-      public static void PrintMainMeny()
+      public static void PrintAdminMenu()
       {
+         
          Console.WriteLine("1) Ta ut pengar");
          Console.WriteLine("2) Sätt in pengar");
          Console.WriteLine("3) Visa Saldo");
          Console.WriteLine("4) Inställningar");
-         Console.WriteLine("5) Logga ut");
+         Console.WriteLine("5) Skapa användare");
+         Console.WriteLine("6) Redigera användare");
+         Console.WriteLine("7) Logga ut");
       }
 
-      public static void PrintLoginMenu()
+      public static void UserManagerMenu()
       {
-         Console.WriteLine("1) Logga in");
-         Console.WriteLine("2) Glömt lösenord");
-         Console.WriteLine("3) Avsluta");
+         Console.WriteLine("1) Ändra lösenord");
+         Console.WriteLine("2) Ändra användarnamn");
+         Console.WriteLine("3) Spärra konto");
+         Console.WriteLine("4) Kundregister");
       }
 
-      public static void LoginChoice()
+      public static void UserManagerMenuChoice()
       {
-
-         int choice = Inputs.GetNumberMinMax(1, 3);
-         switch (choice)
+         int input = Inputs.GetNumberMinMax(1, 4);
+         switch (input)
          {
             case 1:
-               Console.Clear();
-               var user = LogInManager.LogIn();
-               if (user != null)
-               {
-                  Console.Clear();
-
-                  if (user.Admin)
-                  {
-                     AdminMenu.PrintAdminMenu();
-                     AdminMenu.AdminnMenuChoice(user);
-                     // Admin
-                  }
-                  else
-                  {
-                     MainMenuChoice(user);
-                  }
-               }
+               // Ändra lösenord
                break;
-            case 2:
-               Console.Clear();
-               LogInManager.ResetPassword();
+            case 4:
+               LogInManager.PrintUser();
+               Console.ReadKey();
+               //Kundregister
                break;
-            case 3:
-               Console.WriteLine("Programmet avslutas");
-               RunProgram.ProgramOn = false;
-               break;
-
          }
+         
       }
 
-      public static void MainMenuChoice(User user)
+      public static void AdminnMenuChoice(User user)
       {
          bool running = true;
-
+         
          while (running)
          {
             Console.Clear();
-            PrintMainMeny();
-            int choice = Inputs.GetNumberMinMax(1, 5);
+            PrintAdminMenu();
+            int choice = Inputs.GetNumberMinMax(1, 7);
             switch (choice)
             {
                case 1:
@@ -91,6 +75,16 @@ namespace MinBankoMat
                   // Inställningar
                   break;
                case 5:
+                  Console.Clear();
+                  LogInManager manager = new LogInManager();
+                  manager.CreateUser();
+                  //Skapa användare
+                  break;
+               case 6:
+                  UserManagerMenu();
+                  // Ändra användare
+                  break;
+               case 7:
                   running = false;
                   break;
 
@@ -98,8 +92,5 @@ namespace MinBankoMat
             Console.ReadKey();
          }
       }
-
-
-
    }
 }
