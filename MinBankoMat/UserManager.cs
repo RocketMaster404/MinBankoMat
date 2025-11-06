@@ -2,7 +2,7 @@
 
 namespace MinBankoMat
 {
-   internal class LogInManager
+   internal class UserManager
    {
       private  List<int> usedAccountNumbers = new List<int>();
       private static Random rnd = new Random();
@@ -10,7 +10,8 @@ namespace MinBankoMat
       static List<User> users = new List<User>()
       {
          new User("Erik", 1234,1000,4455, 888888){Admin = true},
-         new User("Malin", 1234, 2000,5544,999999)
+         new User("Malin", 1234, 2000,5544,999999),
+         new User("Pontus", 1234, 2000,5544,199999){ActiveAccount = false}
 
       };
 
@@ -22,8 +23,10 @@ namespace MinBankoMat
             Console.WriteLine($"Pinkod: {user.PinCode}");
             Console.WriteLine($"Återställningskod: {user.ResetCode}");
             Console.WriteLine($"Kund Id: {user.CustomerId}");
+            Console.WriteLine();
             
          }
+         Console.ReadKey();
       }
       public  void CreateUser()
       {
@@ -78,7 +81,15 @@ namespace MinBankoMat
 
             foreach (var user in users)
             {
-               
+
+               if (user.UserName == userName && user.PinCode == pinCode && user.ActiveAccount == false)
+               {
+                  Console.WriteLine("Ditt konto är spärrat, kontakta kundtjänst");
+                  Console.ReadKey();
+                  return null;
+
+               }
+
 
                if (user.UserName == userName && user.PinCode == pinCode)
                {
@@ -115,8 +126,33 @@ namespace MinBankoMat
             Console.WriteLine("Felaktig återställningskod");
          }
 
+      }
 
+      public static void AdminChangePassword()
+      {
+         bool match = false;
+         Console.WriteLine("Ange kundens ID:");
+         int id = Inputs.GetUserNumber();
+
+         foreach(var user in users)
+         {
+            if(user.CustomerId == id)
+            {
+               Console.WriteLine($"Ange ny pinkod för {user.UserName}");
+               int pin = Inputs.GetUserNumber();
+               user.PinCode = pin;
+               Console.WriteLine($"Pinkod ändrad för {user.UserName}");
+               match = true;
+            }
+         }
+
+         if (!match)
+         {
+            Console.WriteLine("Felaktigt kund id");
+         }
 
       }
+
+      
    }
 }

@@ -30,20 +30,25 @@ namespace MinBankoMat
 
       public static void UserManagerMenuChoice()
       {
-         int input = Inputs.GetNumberMinMax(1, 4);
+         int input = Inputs.GetUserNumber();
          switch (input)
          {
             case 1:
+               Console.Clear();
+               UserManager.AdminChangePassword();
                // Ändra lösenord
                break;
             case 4:
-               LogInManager.PrintUser();
-               Console.ReadKey();
+               Console.Clear();
+               UserManager.PrintUser();
+               
                //Kundregister
                break;
          }
          
       }
+
+      
 
       public static void AdminnMenuChoice(User user)
       {
@@ -76,12 +81,14 @@ namespace MinBankoMat
                   break;
                case 5:
                   Console.Clear();
-                  LogInManager manager = new LogInManager();
+                  UserManager manager = new UserManager();
                   manager.CreateUser();
                   //Skapa användare
                   break;
                case 6:
+                  Console.Clear();
                   UserManagerMenu();
+                  UserManagerMenuChoice();
                   // Ändra användare
                   break;
                case 7:
@@ -92,5 +99,7 @@ namespace MinBankoMat
             Console.ReadKey();
          }
       }
+
+     
    }
 }

@@ -17,6 +17,7 @@ namespace MinBankoMat
       public bool Admin { get; set; } = false;
       public int CustomerId { get; private set; }
       private static int CustomerIdCount = 1;
+      public bool ActiveAccount = true;
 
 
       public User()
