@@ -24,6 +24,15 @@ namespace MinBankoMat
          Console.WriteLine("3) Avsluta");
       }
 
+      public static void SettingsMenu()
+      {
+         Console.WriteLine("1) Mina uppgifter");
+         Console.WriteLine("2) Ändra pinkod");
+         Console.WriteLine("3) Ändra användarnamn");
+         Console.WriteLine("4) Spärra konto");
+         Console.WriteLine("5) Tillbaka till meny");
+      }
+
       public static void LoginChoice()
       {
 
@@ -32,7 +41,7 @@ namespace MinBankoMat
          {
             case 1:
                Console.Clear();
-               var user = LogInManager.LogIn();
+               var user = UserManager.LogIn();
                if (user != null)
                {
                   Console.Clear();
@@ -41,7 +50,7 @@ namespace MinBankoMat
                   {
                      AdminMenu.PrintAdminMenu();
                      AdminMenu.AdminnMenuChoice(user);
-                     // Admin
+                     
                   }
                   else
                   {
@@ -51,7 +60,7 @@ namespace MinBankoMat
                break;
             case 2:
                Console.Clear();
-               LogInManager.ResetPassword();
+               UserManager.ResetPassword();
                break;
             case 3:
                Console.WriteLine("Programmet avslutas");
@@ -88,7 +97,9 @@ namespace MinBankoMat
                   // Visa saldo
                   break;
                case 4:
-                  // Inställningar
+                  Console.Clear();
+                  SettingsMenu();
+                  Console.ReadKey();
                   break;
                case 5:
                   running = false;
