@@ -13,8 +13,9 @@ namespace MinBankoMat
          Console.WriteLine("1) Ta ut pengar");
          Console.WriteLine("2) Sätt in pengar");
          Console.WriteLine("3) Visa Saldo");
-         Console.WriteLine("4) Inställningar");
-         Console.WriteLine("5) Logga ut");
+         Console.WriteLine("4) För över pengar");
+         Console.WriteLine("5) Inställningar");
+         Console.WriteLine("6) Logga ut");
       }
 
       public static void PrintLoginMenu()
@@ -98,10 +99,15 @@ namespace MinBankoMat
                   break;
                case 4:
                   Console.Clear();
-                  SettingsMenu();
+                  UserManager.TransferMoney(user);
                   Console.ReadKey();
                   break;
                case 5:
+                  Console.Clear();
+                  SettingsMenu();
+                  Console.ReadKey();
+                  break;
+               case 6:
                   running = false;
                   break;
 
