@@ -42,14 +42,14 @@ namespace MinBankoMat
             case 4:
                Console.Clear();
                UserManager.PrintUser();
-               
+
                //Kundregister
                break;
          }
          
       }
 
-      
+
 
       public static void AdminnMenuChoice(User user)
       {
