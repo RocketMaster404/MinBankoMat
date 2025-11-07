@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MinBankoMat
+﻿namespace MinBankoMat
 {
    internal class AdminMenu
    {
       public static void PrintAdminMenu()
       {
-         
          Console.WriteLine("1) Ta ut pengar");
          Console.WriteLine("2) Sätt in pengar");
          Console.WriteLine("3) Visa Saldo");
@@ -39,6 +32,12 @@ namespace MinBankoMat
                UserManager.AdminChangePassword();
                // Ändra lösenord
                break;
+            case 2:
+               UserManager.AdminChangeUsername();
+               break;
+            case 3:
+               UserManager.AdminBlockAccount();
+               break;
             case 4:
                Console.Clear();
                UserManager.PrintUser();
@@ -46,7 +45,7 @@ namespace MinBankoMat
                //Kundregister
                break;
          }
-         
+
       }
 
 
@@ -54,7 +53,7 @@ namespace MinBankoMat
       public static void AdminnMenuChoice(User user)
       {
          bool running = true;
-         
+
          while (running)
          {
             Console.Clear();
@@ -64,18 +63,15 @@ namespace MinBankoMat
             {
                case 1:
                   Console.Clear();
-                  CashManager.Withdraw(user);
-                  // Ta ut pengar
+                  CashManager.Withdraw(user);                  
                   break;
                case 2:
                   Console.Clear();
-                  CashManager.Deposit(user);
-                  // Sätt in pengar
+                  CashManager.Deposit(user);                  
                   break;
                case 3:
                   Console.Clear();
-                  CashManager.ShowBalance(user);
-                  // Visa saldo
+                  CashManager.ShowBalance(user);                  
                   break;
                case 4:
                   Console.Clear();
@@ -103,12 +99,11 @@ namespace MinBankoMat
                case 8:
                   running = false;
                   break;
-
             }
             Console.ReadKey();
          }
       }
 
-     
+
    }
 }

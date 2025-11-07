@@ -11,7 +11,6 @@ namespace MinBankoMat
 
       public static void Withdraw(User user)
       {
-
          Console.Write("Ange beloppet du önskar ta ut: ");
          int withdraw = Inputs.GetUserNumber();
 
@@ -50,9 +49,7 @@ namespace MinBankoMat
 
       public static void ShowBalance(User user)
       {
-         Console.WriteLine($"{user.UserName} ditt saldo är: {user.Balance}");
+         Console.WriteLine($"{user.UserName} ditt saldo är: {user.Balance} Kr");
       }
-
-
    }
 }
