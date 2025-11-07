@@ -30,7 +30,6 @@
             case 1:
                Console.Clear();
                UserManager.AdminChangePassword();
-               // Ändra lösenord
                break;
             case 2:
                UserManager.AdminChangeUsername();
@@ -41,14 +40,9 @@
             case 4:
                Console.Clear();
                UserManager.PrintUser();
-
-               //Kundregister
                break;
          }
-
       }
-
-
 
       public static void AdminnMenuChoice(User user)
       {
@@ -82,19 +76,16 @@
                   Console.Clear();
                   Menu.SettingsMenu();
                   Console.ReadKey();
-                  // Inställningar
                   break;
                case 6:
                   Console.Clear();
                   UserManager manager = new UserManager();
                   manager.CreateUser();
-                  //Skapa användare
                   break;
                case 7:
                   Console.Clear();
                   UserManagerMenu();
                   UserManagerMenuChoice();
-                  // Ändra användare
                   break;
                case 8:
                   running = false;
@@ -103,7 +94,6 @@
             Console.ReadKey();
          }
       }
-
 
    }
 }

@@ -30,8 +30,30 @@ namespace MinBankoMat
       }
       public void CreateUser()
       {
-         Console.Write("Ange användarnamn: ");
-         string userName = Inputs.GetString();
+         string userName = "";
+         bool userNameMatch = false;
+         while (!userNameMatch)
+         {
+            Console.Write("Ange användarnamn: ");
+            userName = Inputs.GetString();
+            bool nameTaken = false;
+            foreach(var u in users)
+            {
+               if(userName == u.UserName)
+               {
+                  Console.WriteLine("Användarnamn upptaget");
+                  nameTaken = true;
+                  break;
+                  
+               }
+               
+            }
+            if (!nameTaken)
+            {
+               userNameMatch = true;
+            }
+         }
+         
          Console.Write("Ange pinkod: ");
          int pinCode = Inputs.GetUserNumber();
          Console.Write("Ange start saldo: ");
