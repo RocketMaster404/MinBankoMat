@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MinBankoMat
+﻿namespace MinBankoMat
 {
    internal class CashManager
    {
@@ -25,7 +19,6 @@ namespace MinBankoMat
             user.Balance -= withdraw;
             Console.WriteLine($"{withdraw} kr har dragits från ditt konto. Nytt saldo: {user.Balance}");
          }
-
       }
 
       public static void Deposit(User user)
