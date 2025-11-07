@@ -10,7 +10,7 @@ namespace MinBankoMat
       static List<User> users = new List<User>()
       {
          new User("Erik", 1234,1000,4455, 888888){Admin = true},
-         new User("Malin", 1234, 2000,5544,999999),
+         new User("Malin", 1234, 2000,5544,11),
          new User("Pontus", 1234, 2000,5544,199999){ActiveAccount = false}
 
       };
@@ -152,6 +152,54 @@ namespace MinBankoMat
          }
 
       }
+      public static void AdminChangeUsername()
+      {
+         
+         bool match = false;
+         Console.WriteLine("Ange kundens ID:");
+         int id = Inputs.GetUserNumber();
+
+         foreach (var user in users)
+         {
+            if (user.CustomerId == id)
+            {
+               Console.WriteLine($"Ange nytt användarnamn för {user.UserName}");
+               string userName = Console.ReadLine();
+               user.UserName = userName;
+               Console.WriteLine($"Användarnamn ändrat till {user.UserName}");
+               match = true;
+            }
+         }
+
+         if (!match)
+         {
+            Console.WriteLine("Felaktigt kund id");
+         }
+
+      }
+      public static void AdminBlockAccount()
+      {
+         
+         bool match = false;
+         Console.WriteLine("Ange kundens ID:");
+         int id = Inputs.GetUserNumber();
+
+         foreach (var user in users)
+         {
+            if (user.CustomerId == id)
+            {
+               Console.WriteLine($"{user.UserName} konto spärrat");
+               user.ActiveAccount = false;
+               match = true;
+            }
+         }
+
+         if (!match)
+         {
+            Console.WriteLine("Felaktigt kund id");
+         }
+
+      }
 
       public static void TransferMoney(User LoggedInUser)
       {
@@ -168,6 +216,7 @@ namespace MinBankoMat
             }
             if (accountNumber == user.AccountNumber)
             {
+               Console.WriteLine($"Överför till {user.UserName}");
                Console.Write("Ange belopp: ");
                int amount = Inputs.GetUserNumber();
                if (amount <= 0)
@@ -177,6 +226,7 @@ namespace MinBankoMat
                else if (amount > LoggedInUser.Balance)
                {
                   Console.WriteLine("Du har inte tillräckligt med pengar.");
+                  match = true;
                }
                else
                {

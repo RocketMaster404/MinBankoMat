@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MinBankoMat
+﻿namespace MinBankoMat
 {
    internal class Menu
    {
@@ -50,8 +44,7 @@ namespace MinBankoMat
                   if (user.Admin)
                   {
                      AdminMenu.PrintAdminMenu();
-                     AdminMenu.AdminnMenuChoice(user);
-                     
+                     AdminMenu.AdminnMenuChoice(user); 
                   }
                   else
                   {
@@ -67,7 +60,6 @@ namespace MinBankoMat
                Console.WriteLine("Programmet avslutas");
                RunProgram.ProgramOn = false;
                break;
-
          }
       }
 
@@ -85,17 +77,18 @@ namespace MinBankoMat
                case 1:
                   Console.Clear();
                   CashManager.Withdraw(user);
-                  // Ta ut pengar
+                 
                   break;
                case 2:
                   Console.Clear();
                   CashManager.Deposit(user);
-                  // Sätt in pengar
+                  
                   break;
                case 3:
                   Console.Clear();
                   CashManager.ShowBalance(user);
-                  // Visa saldo
+                  Console.ReadKey();
+                  
                   break;
                case 4:
                   Console.Clear();
@@ -112,7 +105,7 @@ namespace MinBankoMat
                   break;
 
             }
-            Console.ReadKey();
+            //Console.ReadKey();
          }
       }
 
