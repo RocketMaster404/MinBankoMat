@@ -94,7 +94,8 @@ namespace MinBankoMat
       public static User LogIn()
       {
          bool running = true;
-         while (running)
+         int attempts = 0;
+         while (running && attempts < 3)
          {
             Console.Write("Ange ditt användarnamn:");
             string userName = Inputs.GetString();
@@ -121,6 +122,7 @@ namespace MinBankoMat
 
                }
             }
+            attempts++;
             Console.WriteLine("Ogiltigt användarnamn/lösenord");
          }
 
